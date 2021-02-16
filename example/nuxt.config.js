@@ -1,3 +1,3 @@
 export default {
-  modules: [require("../lib/module")],
+  buildModules: [require("../lib/module")],
 };

@@ -26,6 +26,7 @@ This package is for loading SVG's into Nuxt.js pages. It allows you to import `.
 - `file.svg?data` - base64 data url import using `url-loader`
 - `file.svg?inline` - inline import using `vue-svg-loader`
 - `file.svg?raw` - raw html import using `raw-loader`
+- `file.svg?sprite` - SVG sprite using `svg-sprite-loader`
 
 ## Installation
 
@@ -41,6 +42,29 @@ export default {
 ```
 
 And that's it! You don't have to install anything else, you're ready to go.
+
+## Configuration
+
+```javascript
+// nuxt.config.js
+export default {
+  buildModules: [
+    [
+      "@nuxtjs/svg",
+      {
+        sprite: {
+          svgSpriteLoader: {
+            // svg-sprite-loader options
+          },
+          spriteLoaderPlugin: {
+            // SpriteLoaderPlugin options
+          }
+        }
+      },
+    ],
+  ],
+};
+```
 
 ## Usage
 
@@ -124,6 +148,26 @@ Load the raw SVG data as HTML using `raw-loader`:
     <g fill-rule="nonzero" fill="none"><path></path></g>
   </svg>
 </div>
+```
+
+### `vue-sprite-loader`
+
+```html
+<template>
+    <svg :viewBox="spriteNuxtLogo.viewBox">
+      <use :xlink:href="'#' + spriteNuxtLogo.id"></use>
+    </svg>
+</template>
+
+<script>
+  import spriteNuxtLogo from "~/assets/nuxt.svg?sprite";
+
+  export default {
+    data() {
+      return { spriteNuxtLogo };
+    },
+  };
+</script>
 ```
 
 ## Dynamic imports

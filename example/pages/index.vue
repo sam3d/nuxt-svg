@@ -19,18 +19,26 @@
       <h2>raw-loader</h2>
       <div v-html="rawNuxtLogo" />
     </div>
+
+    <div>
+      <h2>svg-sprite-loader</h2>
+      <svg :viewBox="spriteNuxtLogo.viewBox">
+        <use :xlink:href="'#' + spriteNuxtLogo.id"></use>
+      </svg>
+    </div>
   </div>
 </template>
 
 <script>
 import NuxtLogo from "~/assets/nuxt.svg?inline";
+import spriteNuxtLogo from "~/assets/nuxt.svg?sprite";
 import rawNuxtLogo from "~/assets/nuxt.svg?raw";
 
 export default {
-  components: { NuxtLogo },
+  components: { NuxtLogo, spriteNuxtLogo },
 
   data() {
-    return { rawNuxtLogo };
+    return { rawNuxtLogo, spriteNuxtLogo };
   },
 };
 </script>
