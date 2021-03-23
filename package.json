@@ -18,6 +18,8 @@
   "main": "lib/module.js",
   "scripts": {
     "dev": "nuxt dev example",
+    "generate": "nuxt generate example",
+    "start": "nuxt start example",
     "format": "prettier --write '**/*.{js,json,vue}'"
   },
   "dependencies": {
